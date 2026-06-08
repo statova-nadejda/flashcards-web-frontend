@@ -21,10 +21,10 @@ const navItems = [
 export function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="min-h-screen text-stone-700">
-      <header className="flex h-[74px] items-center gap-8 border-stone-500 bg-sky-200 px-14">
-        <div className="text-4xl font-light">MemoBit</div>
+      <header className="grid h-[74px] grid-cols-[1fr_minmax(280px,800px)_1fr] items-center gap-8 bg-sky-700/70 px-14 shadow-md shadow-sky-950/10">
+        <div className="justify-self-start text-4xl font-light">MemoBit</div>
 
-        <div className="flex h-9 max-w-[700px] flex-1 items-center rounded-lg border border-stone-600 bg-white px-3">
+        <div className="flex h-9 w-full items-center rounded-lg border border-sky-900/20 bg-white px-3 shadow-sm shadow-sky-950/10">
           <MagnifyingGlassIcon className="mr-4 size-6 text-stone-900" />
           <Input
             className="text-base placeholder:text-stone-500"
@@ -34,21 +34,23 @@ export function AppLayout({ children }: AppLayoutProps) {
           />
         </div>
 
-        <Button
-          aria-label="Уведомления"
-          className="ml-auto text-stone-700"
-          size="icon"
-          variant="ghost"
-        >
-          <BellIcon className="size-8" />
-        </Button>
+        <div className="flex items-center gap-3 justify-self-end">
+          <Button
+            aria-label="Уведомления"
+            className="text-stone-700 shadow-sm shadow-sky-950/10 hover:bg-white"
+            size="icon"
+            variant="unstyled"
+          >
+            <BellIcon className="size-7" />
+          </Button>
 
-        <Button
-          aria-label="Профиль"
-          className="size-10 rounded-full border border-stone-700 bg-orange-300"
-          size="icon"
-          variant="unstyled"
-        />
+          <Button
+            aria-label="Профиль"
+            className="border border-orange-200 bg-orange-300 shadow-md shadow-sky-950/15 hover:bg-orange-200"
+            size="icon"
+            variant="unstyled"
+          />
+        </div>
       </header>
 
       <div className="grid min-h-[calc(100vh-74px)] grid-cols-[420px_1fr]">
@@ -58,8 +60,8 @@ export function AppLayout({ children }: AppLayoutProps) {
               <NavLink
                 className={({ isActive }) =>
                   cn(
-                    "flex h-12 items-center justify-center rounded border border-sky-900 text-2xl shadow-sm",
-                    isActive ? "bg-orange-300" : "bg-white",
+                    "flex h-12 items-center justify-center rounded border border-sky-800 text-2xl shadow-sm shadow-sky-950/10 transition-colors",
+                    isActive ? "bg-orange-300 shadow-md" : "bg-white",
                   )
                 }
                 key={item.to}
