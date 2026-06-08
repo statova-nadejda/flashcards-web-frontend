@@ -1,13 +1,14 @@
 import eslint from "@eslint/js";
-import globals from "globals";
+
+import prettierConfig from "eslint-config-prettier";
+import importPlugin from "eslint-plugin-import";
+import prettier from "eslint-plugin-prettier";
+import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
-import tseslint from "typescript-eslint";
-import prettier from "eslint-plugin-prettier";
-import prettierConfig from "eslint-config-prettier";
-import react from "eslint-plugin-react";
-import importPlugin from "eslint-plugin-import";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   { ignores: ["dist", "node_modules", "coverage"] },

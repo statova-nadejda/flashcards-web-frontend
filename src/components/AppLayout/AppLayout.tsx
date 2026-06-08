@@ -1,5 +1,7 @@
 import { BellIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
+import { Button, Input } from "~/components/ui";
+import { cn } from "~/utils";
 import { routePaths } from "~/utils/routePaths";
 
 import type { ReactNode } from "react";
@@ -16,7 +18,7 @@ const navItems = [
   { label: "Тесты", to: "/tests" },
 ];
 
-const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
+export function AppLayout({ children }: AppLayoutProps) {
   return (
     <div className="min-h-screen text-stone-700">
       <header className="flex h-[74px] items-center gap-8 border-stone-500 bg-sky-200 px-14">
@@ -24,21 +26,28 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
 
         <div className="flex h-9 max-w-[700px] flex-1 items-center rounded-lg border border-stone-600 bg-white px-3">
           <MagnifyingGlassIcon className="mr-4 size-6 text-stone-900" />
-          <input
-            className="w-full bg-transparent text-base outline-none placeholder:text-stone-500"
+          <Input
+            className="text-base placeholder:text-stone-500"
             placeholder="Быстрый поиск групп, курсов, авторов"
             type="search"
+            variant="unstyled"
           />
         </div>
 
-        <button className="ml-auto text-stone-700" type="button">
+        <Button
+          aria-label="Уведомления"
+          className="ml-auto text-stone-700"
+          size="icon"
+          variant="ghost"
+        >
           <BellIcon className="size-8" />
-        </button>
+        </Button>
 
-        <button
+        <Button
           aria-label="Профиль"
           className="size-10 rounded-full border border-stone-700 bg-orange-300"
-          type="button"
+          size="icon"
+          variant="unstyled"
         />
       </header>
 
@@ -48,10 +57,10 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
             {navItems.map((item) => (
               <NavLink
                 className={({ isActive }) =>
-                  [
+                  cn(
                     "flex h-12 items-center justify-center rounded border border-sky-900 text-2xl shadow-sm",
                     isActive ? "bg-orange-300" : "bg-white",
-                  ].join(" ")
+                  )
                 }
                 key={item.to}
                 to={item.to}
@@ -66,6 +75,4 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       </div>
     </div>
   );
-};
-
-export default AppLayout;
+}

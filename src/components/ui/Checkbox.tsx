@@ -1,24 +1,18 @@
-import type { ComponentProps, ReactNode } from "react";
+import { cn } from "~/utils";
 
-type CheckboxProps = Omit<ComponentProps<"input">, "type"> & {
-  label?: ReactNode;
-};
+import type { ComponentProps } from "react";
 
-const Checkbox: React.FC<CheckboxProps> = ({
-  className = "",
-  label,
-  ...props
-}) => {
+type CheckboxProps = Omit<ComponentProps<"input">, "type">;
+
+export function Checkbox({ className = "", ...props }: CheckboxProps) {
   return (
-    <label className="flex items-center gap-2 text-sm text-stone-700">
-      <input
-        className={`size-4 rounded accent-sky-400 ${className}`}
-        type="checkbox"
-        {...props}
-      />
-      {label ? <span>{label}</span> : null}
-    </label>
+    <input
+      className={cn(
+        "size-4 shrink-0 rounded-sm border border-stone-300 bg-white accent-sky-500 shadow-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-sky-300 disabled:cursor-not-allowed disabled:opacity-50",
+        className,
+      )}
+      type="checkbox"
+      {...props}
+    />
   );
-};
-
-export default Checkbox;
+}

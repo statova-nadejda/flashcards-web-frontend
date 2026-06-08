@@ -1,4 +1,4 @@
-const MainPage: React.FC = () => {
+export function MainPage() {
   return (
     <section>
       <h1 className="mb-9 text-4xl font-light">Привет, UserName!</h1>
@@ -7,6 +7,4 @@ const MainPage: React.FC = () => {
       </div>
     </section>
   );
-};
-
-export default MainPage;
+}

@@ -1,23 +1,26 @@
-/**
- * Conditionally joins class names together
- * @param args Any number of arguments which can be a string or object.
- * If the value associated with a given key is falsy, that key won't be included in the output
- * @returns A string of joined class names separated by a space
- */
-export const className = (
-  ...args: Array<string | Record<string, boolean> | undefined>
-) => {
+type ClassValue =
+  | string
+  | false
+  | null
+  | undefined
+  | Record<string, boolean | null | undefined>;
+
+export function cn(...args: ClassValue[]) {
   const classes: string[] = [];
 
   args.forEach((arg) => {
     if (typeof arg === "string" && arg !== "") {
       classes.push(arg);
-    } else if (typeof arg === "object") {
+    } else if (arg && typeof arg === "object") {
       Object.entries(arg).forEach(([key, value]) => {
-        if (value) classes.push(key);
+        if (value) {
+          classes.push(key);
+        }
       });
     }
   });
 
   return classes.join(" ");
-};
+}
+
+export { cn as className };

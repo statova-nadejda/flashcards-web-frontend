@@ -1,13 +1,13 @@
 import { AppLayout } from "~/components/AppLayout";
 import { NotFound } from "~/components/NotFound";
-import LoginPage from "~/pages/LoginPage";
-import MainPage from "~/pages/MainPage";
-import RegisterPage from "~/pages/RegisterPage";
+import { LoginPage } from "~/pages/LoginPage";
+import { MainPage } from "~/pages/MainPage";
+import { RegisterPage } from "~/pages/RegisterPage";
 import { routePaths } from "~/utils/routePaths";
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 
-const AppRouter: React.FC = () => {
+export function AppRouter() {
   return (
     <BrowserRouter>
       <Routes>
@@ -24,6 +24,4 @@ const AppRouter: React.FC = () => {
       </Routes>
     </BrowserRouter>
   );
-};
-
-export default AppRouter;
+}

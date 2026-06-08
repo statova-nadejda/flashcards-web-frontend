@@ -1,4 +1,8 @@
+import { cn } from "~/utils";
+
 import type { ReactNode } from "react";
+
+import { Label } from "./Label";
 
 type FormFieldProps = {
   children: ReactNode;
@@ -8,24 +12,18 @@ type FormFieldProps = {
   label?: ReactNode;
 };
 
-const FormField: React.FC<FormFieldProps> = ({
+export function FormField({
   children,
   className = "",
   error,
   htmlFor,
   label,
-}) => {
+}: FormFieldProps) {
   return (
-    <div className={`grid gap-2 ${className}`}>
-      {label ? (
-        <label className="text-sm font-medium text-stone-700" htmlFor={htmlFor}>
-          {label}
-        </label>
-      ) : null}
+    <div className={cn("grid gap-2 text-left", className)}>
+      {label ? <Label htmlFor={htmlFor}>{label}</Label> : null}
       {children}
       {error ? <p className="text-sm text-red-700">{error}</p> : null}
     </div>
   );
-};
-
-export default FormField;
+}
