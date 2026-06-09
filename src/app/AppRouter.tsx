@@ -18,7 +18,7 @@ export function AppRouter() {
         <Route path={routePaths.Login} element={<LoginPage />} />
         <Route path={routePaths.Register} element={<RegisterPage />} />
         <Route element={<AppLayout />}>
-          <Route path={routePaths.MainPage} element={<MainPage />} />
+          <Route path={routePaths.StudentPage} element={<MainPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+:root {
+  --color-stone-700: #4a3f35;
+}
+
 body {
+  color: #4a3f35;
   margin: 0;
   font-family:
     Nunito,
@@ -9,4 +14,26 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
+}
+
+.flashcard-set-card {
+  transition:
+    transform 120ms ease,
+    background-color 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+
+.flashcard-set-card:hover {
+  transform: translateY(-1px);
+  background-color: rgb(3 105 161 / 0.76);
+  border-color: rgb(186 230 253 / 0.45);
+  box-shadow: 0 8px 14px rgb(8 47 73 / 0.16);
+}
+
+.flashcard-set-card:active {
+  transform: translateY(1px) scale(0.99);
+  background-color: rgb(3 105 161 / 0.82);
+  border-color: rgb(125 211 252 / 0.5);
+  box-shadow: 0 4px 8px rgb(8 47 73 / 0.14);
 }

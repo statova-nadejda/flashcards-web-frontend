@@ -1,6 +1,6 @@
 export const routePaths = {
   Index: "/",
   Login: "/login",
-  MainPage: "/mainPage",
+  StudentPage: "/student-page",
   Register: "/register",
 };
