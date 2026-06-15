@@ -13,8 +13,8 @@ type AppLayoutProps = {
 
 const navItems = [
   { label: "Главная", to: routePaths.StudentPage },
-  { label: "Библиотека", to: "/library" },
-  { label: "Мое обучение", to: "/my-learning" },
+  { label: "Библиотека", to: routePaths.StudentLibrarySets },
+  { label: "Мое обучение", to: routePaths.CardSetGroups },
   { label: "Тесты", to: "/tests" },
 ];
 
@@ -75,7 +75,7 @@ export function AppLayout({ children }: AppLayoutProps) {
           </nav>
         </aside>
 
-        <main className="px-10 py-14">{children ?? <Outlet />}</main>
+        <main className="px-10 py-12">{children ?? <Outlet />}</main>
       </div>
     </div>
   );
