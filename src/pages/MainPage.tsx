@@ -48,7 +48,7 @@ export function MainPage() {
             <FlashcardSetCard
               author={set.author}
               cardsCount={set.cardsCount}
-              key={set.title}
+              key={set.id}
               title={set.title}
               className="h-28"
             />

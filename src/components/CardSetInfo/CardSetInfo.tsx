@@ -6,15 +6,18 @@ import { Button } from "~/components/ui";
 import { recommendedSets } from "~/pages/MainPage.constants";
 import { routePaths } from "~/utils/routePaths";
 
-import { Link } from "react-router";
-
-const cards = recommendedSets.map((set, index) => ({
-  answer: `Ответ для ${set.title} — ${set.author}`,
-  id: index + 1,
-  question: `Вопрос ${index + 1}: ${set.title}`,
-}));
+import { Link, useParams } from "react-router";
 
 export function CardSetInfo() {
+  const { setId } = useParams();
+  const selectedSet = recommendedSets[Number(setId)];
+  const cards = selectedSet
+    ? Array.from({ length: selectedSet.cardsCount }, (_, index) => ({
+        answer: `Ответ для ${selectedSet.title} — ${selectedSet.author}`,
+        id: index + 1,
+        question: `Вопрос ${index + 1}: ${selectedSet.title}`,
+      }))
+    : [];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlePrev = () =>
@@ -23,6 +26,20 @@ export function CardSetInfo() {
     setCurrentIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
 
   const currentCard = cards[currentIndex];
+
+  if (!selectedSet || !currentCard) {
+    return (
+      <section className="mx-auto flex w-full max-w-6xl flex-col gap-4 pt-4 text-[#2D3748]">
+        <h1 className="text-2xl font-bold text-stone-800">Набор не найден</h1>
+        <Link
+          className="inline-flex h-10 w-[170px] items-center justify-center rounded-md bg-[#FFB454] text-sm font-medium text-[#2D3748] shadow-sm transition-colors hover:bg-[#F0A53A] focus-visible:ring-2 focus-visible:ring-sky-300"
+          to={routePaths.StudentLibrarySets}
+        >
+          Вернуться к наборам
+        </Link>
+      </section>
+    );
+  }
 
   return (
     <section className="mx-auto flex w-full max-w-6xl flex-col gap-6 pt-4 text-[#2D3748]">

@@ -1,5 +1,6 @@
 import { FlashcardSetCard } from "~/components/FlashcardSetCard";
 import { Button } from "~/components/ui";
+import { routePaths } from "~/utils/routePaths";
 
 import { recommendedSets } from "./MainPage.constants";
 
@@ -16,8 +17,9 @@ export function StudentLibrarySets() {
                 author={set.author}
                 cardsCount={set.cardsCount}
                 className="h-28"
-                key={set.title}
+                key={set.id}
                 title={set.title}
+                to={routePaths.getCardSetGroup(set.tag)}
               />
             ))}
           </div>
@@ -44,8 +46,9 @@ export function StudentLibrarySets() {
                 author={set.author}
                 cardsCount={set.cardsCount}
                 className="h-28"
-                key={set.title}
+                key={`saved-${set.id}`}
                 title={set.title}
+                to={routePaths.getCardSetGroup(set.tag)}
               />
             ))}
           </div>

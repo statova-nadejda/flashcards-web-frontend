@@ -5,12 +5,14 @@ import { Link } from "react-router";
 type CardSetGroupCardProps = {
   author: string;
   cardsCount: number;
+  setId: number;
   title: string;
 };
 
 export function CardSetGroupCard({
   author,
   cardsCount,
+  setId,
   title,
 }: CardSetGroupCardProps) {
   return (
@@ -28,9 +30,9 @@ export function CardSetGroupCard({
       <div className="mt-4 flex gap-2">
         <Link
           className="inline-flex h-11 flex-1 items-center justify-center rounded-md bg-orange-300 px-5 py-2 text-sm font-medium text-stone-800 transition-colors outline-none hover:bg-orange-400 focus-visible:ring-2 focus-visible:ring-sky-300"
-          to={routePaths.StudyCardSet}
+          to={routePaths.getCardSetInfo(setId)}
         >
-          Учить
+          Открыть
         </Link>
         <Link
           className="inline-flex h-11 flex-1 items-center justify-center rounded-md bg-orange-300 px-5 py-2 text-sm font-medium text-stone-800 transition-colors outline-none hover:bg-orange-400 focus-visible:ring-2 focus-visible:ring-sky-300"

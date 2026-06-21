@@ -7,6 +7,7 @@ import { StudyCardSet } from "~/components/StudyCardSet";
 import { LoginPage } from "~/pages/LoginPage";
 import { MainPage } from "~/pages/MainPage";
 import { RegisterPage } from "~/pages/RegisterPage";
+import { StudentCardSet } from "~/pages/StudentCardSet";
 import { StudentLibrarySets } from "~/pages/StudentLibrarySets";
 import { routePaths } from "~/utils/routePaths";
 
@@ -25,6 +26,10 @@ export function AppRouter() {
         <Route path={routePaths.StudyCardSet} element={<StudyCardSet />} />
         <Route element={<AppLayout />}>
           <Route path={routePaths.StudentPage} element={<MainPage />} />
+          <Route
+            path={routePaths.StudentCardSet}
+            element={<StudentCardSet />}
+          />
           <Route
             path={routePaths.StudentLibrarySets}
             element={<StudentLibrarySets />}
